@@ -3,6 +3,12 @@ local Player = game.Players.LocalPlayer -- declares game players to a local base
 local Character = Player.Character or Player.CharacterAdded:Wait() -- waits for a Playble charecter to join or be added to server
 local Humanoid = Character:WaitForChild("Humanoid") -- waits for a player
 
+--  Update Character and Humanoid when player respawns
+Player.CharacterAdded:Connect(function(newCharacter) -- When player respawns
+	Character = newCharacter -- Sets the new character
+	Humanoid = newCharacter:WaitForChild("Humanoid") -- Sets the new Humanoid
+end)
+
 -- Stamina system
 local maxStamina = 100 -- Sets the maximum server
 local stamina = maxStamina -- sets each players Current stamina
